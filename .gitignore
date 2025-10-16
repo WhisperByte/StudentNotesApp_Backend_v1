@@ -1,0 +1,23 @@
+# Maven build
+target/
+*.log
+
+# System files
+.DS_Store
+.idea/
+*.iml
+
+# Credentials
+google-services.json
+firebase-key.json
+serviceAccountKey.json
+
+# OS / Misc
+*.class
+*.jar
+*.war
+*.ear
+
+# Environment
+.env
+

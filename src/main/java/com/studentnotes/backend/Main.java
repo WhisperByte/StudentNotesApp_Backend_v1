@@ -6,7 +6,7 @@ import java.net.InetSocketAddress;
 public class Main {
   public static void main(String[] args) throws Exception {
 
-    //  Server port (default 8080 if PORT not set)
+    //  Server port (default 8080 if PORT not set t)
     int port = Integer.parseInt(System.getenv().getOrDefault("PORT", 
 "8080"));
 

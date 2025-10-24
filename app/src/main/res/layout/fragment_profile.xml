@@ -10,12 +10,22 @@
         android:layout_height="wrap_content"
         android:padding="16dp">
 
+        <TextView
+            android:id="@+id/profile_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Profile"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"/>
+
         <!-- Profile Picture -->
         <ImageView
             android:id="@+id/profile_image"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="30dp"
             android:layout_gravity="center"
             android:src="@drawable/ic_profile_placeholder"
             android:scaleType="centerCrop"

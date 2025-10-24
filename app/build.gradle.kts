@@ -45,6 +45,7 @@ dependencies {
     implementation(libs.googleid)
     implementation(libs.material.v1130)
     implementation (libs.picasso)
+    implementation(libs.firebase.storage)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)

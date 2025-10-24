@@ -2,11 +2,7 @@ package com.example.studentnotesapp_backend_v1;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.net.Uri;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +11,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+
 import com.example.studentnotesapp_backend_v1.auth.LoginActivity;
+import com.example.studentnotesapp_backend_v1.profile.ChangePasswordActivity;
+import com.example.studentnotesapp_backend_v1.profile.EditProfileActivity;
+import com.example.studentnotesapp_backend_v1.profile.NotificationSettingsActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -54,45 +57,50 @@ public class ProfileFragment extends Fragment {
             profileEmail.setText(currentUser.getEmail() != null ?
                     currentUser.getEmail() : "student@email.com");
 
+            // 🔹 Fetch Firestore data for name and profile image
             FirebaseFirestore.getInstance()
                     .collection("users")
                     .document(currentUser.getUid())
                     .get()
-                    .addOnSuccessListener(document -> {
-                        if (document.exists()) {
-                            String name = document.getString("name");
+                    .addOnSuccessListener(documentSnapshot -> {
+                        if (documentSnapshot.exists()) {
+                            String name = documentSnapshot.getString("name");
+                            String photoUrl = documentSnapshot.getString("photoUrl");
+
                             profileName.setText(name != null ? name : "Student Name");
+
+                            if (photoUrl != null && !photoUrl.isEmpty()) {
+                                Picasso.get().load(photoUrl)
+                                        .placeholder(R.drawable.ic_profile_placeholder)
+                                        .error(R.drawable.ic_profile_placeholder)
+                                        .into(profileImage);
+                            } else {
+                                profileImage.setImageResource(R.drawable.ic_profile_placeholder);
+                            }
                         } else {
                             profileName.setText("Student Name");
+                            profileImage.setImageResource(R.drawable.ic_profile_placeholder);
                         }
                     })
                     .addOnFailureListener(e -> {
-                        profileName.setText("Error loading name");
+                        Toast.makeText(getContext(), "Failed to load profile: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                     });
+        }
 
-            Uri photoUri = currentUser.getPhotoUrl();
-            if (photoUri != null) {
-                Picasso.get().load(photoUri).into(profileImage);
-            }
-    }
-
+        // 🔹 Logout button
         logoutButton.setOnClickListener(v -> {
             try {
-                // 1️⃣ Sign out from Firebase
                 FirebaseAuth.getInstance().signOut();
 
-                // 2️⃣ Clear local login state
                 if (getActivity() != null) {
                     SharedPreferences prefs = getActivity().getSharedPreferences("UserPrefs", getActivity().MODE_PRIVATE);
                     prefs.edit().clear().apply();
 
-                    // 3️⃣ Redirect to LoginActivity
                     Intent intent = new Intent(getActivity(), LoginActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                     Toast.makeText(getActivity(), "You have been logged out", Toast.LENGTH_SHORT).show();
                     startActivity(intent);
 
-                    // 4️⃣ Finish MainActivity safely
                     getActivity().finish();
                 }
             } catch (Exception e) {
@@ -101,10 +109,22 @@ public class ProfileFragment extends Fragment {
             }
         });
 
-
-        // Optional: click listener for Edit Profile (future)
+        // 🔹 Edit Profile
         view.findViewById(R.id.edit_profile).setOnClickListener(v -> {
-            // TODO: Open EditProfileActivity to change name/email/photo
+            Intent intent = new Intent(getActivity(), EditProfileActivity.class);
+            startActivity(intent);
+        });
+
+        // 🔹 Change Password
+        view.findViewById(R.id.change_password).setOnClickListener(v -> {
+            Intent intent = new Intent(getActivity(), ChangePasswordActivity.class);
+            startActivity(intent);
+        });
+
+        // 🔹 Notification Settings
+        view.findViewById(R.id.notifications).setOnClickListener(v -> {
+            Intent intent = new Intent(getActivity(), NotificationSettingsActivity.class);
+            startActivity(intent);
         });
     }
 }

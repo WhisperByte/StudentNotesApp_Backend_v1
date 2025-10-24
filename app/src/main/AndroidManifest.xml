@@ -16,7 +16,12 @@
             android:name=".MainActivity"
             android:exported="true"/>
         <activity android:name=".auth.RegisterActivity"/>
+        <activity android:name=".profile.EditProfileActivity" />
+        <activity android:name=".profile.ChangePasswordActivity"
+            android:theme="@style/Theme.StudentNotesApp_Backend_v1"/>
+        <activity android:name=".profile.NotificationSettingsActivity" />
         <activity android:name=".auth.LoginActivity"
+            android:theme="@style/Theme.StudentNotesApp_Backend_v1"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

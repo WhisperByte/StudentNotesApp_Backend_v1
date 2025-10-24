@@ -33,6 +33,7 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin = findViewById(R.id.btnLogin);
         goToRegister = findViewById(R.id.goToRegister);
         auth = FirebaseAuth.getInstance();
+        TextView forgotPassword = findViewById(R.id.tv_forgot_password);
 
         progressDialog = new ProgressDialog(this);
         progressDialog.setCancelable(false);
@@ -49,6 +50,18 @@ public class LoginActivity extends AppCompatActivity {
         goToRegister.setOnClickListener(v -> {
             startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
             finish();
+        });
+
+        forgotPassword.setOnClickListener(v -> {
+            String emailInput = email.getText().toString().trim();
+            if (emailInput.isEmpty()) {
+                Toast.makeText(this, "Enter your email above to reset password", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            FirebaseAuth.getInstance().sendPasswordResetEmail(emailInput)
+                    .addOnSuccessListener(aVoid -> Toast.makeText(this, "Password reset email sent, check spam folder if not visible in emails.", Toast.LENGTH_SHORT).show())
+                    .addOnFailureListener(e -> Toast.makeText(this, "Failed: " + e.getMessage(), Toast.LENGTH_SHORT).show());
         });
     }
 

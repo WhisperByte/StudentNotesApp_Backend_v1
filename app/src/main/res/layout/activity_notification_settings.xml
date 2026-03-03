@@ -46,24 +46,24 @@
 
             <Switch
                 android:id="@+id/switchTaskDeadline"
-                android:text="Task Deadline Reminders"
-                android:checked="true"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="48dp"
+                android:checked="true"
+                android:text="Task Deadline Reminders" />
 
             <Switch
                 android:id="@+id/switchDailySummary"
-                android:text="Daily Summary Notifications"
-                android:checked="false"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="48dp"
+                android:checked="false"
+                android:text="Daily Summary Notifications" />
 
             <Switch
                 android:id="@+id/switchAppUpdates"
-                android:text="App Update Notifications"
-                android:checked="true"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="48dp"
+                android:checked="true"
+                android:text="App Update Notifications" />
 
         </LinearLayout>
     </ScrollView>

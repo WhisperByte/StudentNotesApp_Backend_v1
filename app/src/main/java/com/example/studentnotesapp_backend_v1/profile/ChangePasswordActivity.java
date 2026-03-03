@@ -33,9 +33,7 @@ public class ChangePasswordActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_change_password);
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.holo_blue_dark));
-        }
+
 
 
         // Add top padding equal to status bar height so the app bar is not hidden
@@ -63,11 +61,6 @@ public class ChangePasswordActivity extends AppCompatActivity {
 
         // Set the status bar to the same blue as app bar
         window.setStatusBarColor(getResources().getColor(android.R.color.holo_blue_light));
-
-        // Make icons white (since bar is blue)
-        WindowInsetsControllerCompat insetsController =
-                new WindowInsetsControllerCompat(window, window.getDecorView());
-        insetsController.setAppearanceLightStatusBars(false);
 
     }
 

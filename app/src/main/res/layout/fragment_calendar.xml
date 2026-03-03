@@ -2,14 +2,132 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
-    android:orientation="vertical">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@android:color/white"
+    android:padding="16dp"
+    android:fitsSystemWindows="true">
 
+    <!-- Page Title -->
     <TextView
-        android:layout_width="120dp"
+        android:id="@+id/calendarTitle"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Calendar Fragment"
-        android:textColor="@android:color/black"
-        android:textSize="20sp"
-        android:textStyle="bold" />
+        android:text=" Calendar"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        android:textColor="#000000"
+        android:paddingBottom="16dp" />
+
+    <!-- Calendar -->
+    <CalendarView
+        android:id="@+id/calendarView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp" />
+
+    <!-- Selected Date Header -->
+    <TextView
+        android:id="@+id/selectedDateTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tasks for Today"
+        android:textSize="18sp"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        android:paddingBottom="10dp" />
+
+    <!-- Loading Spinner -->
+    <ProgressBar
+        android:id="@+id/tasksLoading"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:visibility="gone"
+        android:layout_gravity="center"
+        android:indeterminateTint="#1976D2" />
+
+    <!-- Tasks List for Selected Date -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvDailyTasks"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:nestedScrollingEnabled="true" />
+
+    <!-- Legend -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="3"
+        android:paddingTop="12dp">
+
+        <!-- Assignment = Blue -->
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_vertical|start">
+
+            <View
+                android:layout_width="14dp"
+                android:layout_height="14dp"
+                android:background="#1976D2"
+                android:layout_marginEnd="6dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Assignment"
+                android:textColor="#000000"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <!-- Exam = Red -->
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_vertical|center">
+
+            <View
+                android:layout_width="14dp"
+                android:layout_height="14dp"
+                android:background="#D32F2F"
+                android:layout_marginEnd="6dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Exam"
+                android:textColor="#000000"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <!-- Personal = Green -->
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_vertical|end">
+
+            <View
+                android:layout_width="14dp"
+                android:layout_height="14dp"
+                android:background="#388E3C"
+                android:layout_marginEnd="6dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Personal"
+                android:textColor="#000000"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
 </LinearLayout>

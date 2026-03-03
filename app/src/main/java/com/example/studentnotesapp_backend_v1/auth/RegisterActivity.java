@@ -104,7 +104,6 @@ public class RegisterActivity extends AppCompatActivity {
 
     private void saveUserData(String uid, String name, String email) {
         Log.d(TAG, "Saving user data for UID: " + uid);
-
         Map<String, Object> userMap = new HashMap<>();
         userMap.put("name", name);
         userMap.put("email", email);

@@ -65,17 +65,17 @@
             <EditText
                 android:id="@+id/edit_name"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Full Name"
-                android:layout_marginTop="16dp"/>
+                android:layout_height="48dp"
+                android:layout_marginTop="16dp"
+                android:hint="Full Name" />
 
             <EditText
                 android:id="@+id/edit_email"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="48dp"
+                android:layout_marginTop="8dp"
                 android:hint="Email"
-                android:inputType="textEmailAddress"
-                android:layout_marginTop="8dp"/>
+                android:inputType="textEmailAddress" />
 
             <Button
                 android:id="@+id/btn_save"

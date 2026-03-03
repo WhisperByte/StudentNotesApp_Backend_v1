@@ -1,15 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
-    android:orientation="vertical">
+    android:padding="16dp"
+    android:background="@android:color/white"
+    android:fitsSystemWindows="true">
 
+    <!-- Title -->
     <TextView
-        android:layout_width="120dp"
+        android:id="@+id/remindersTitle"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Reminder Fragment"
-        android:textColor="@android:color/black"
-        android:textSize="20sp"
-        android:textStyle="bold" />
-</LinearLayout>
+        android:text="Reminders"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        android:textColor="#000000"
+        android:paddingBottom="16dp"/>
+
+    <!-- Loading Spinner -->
+    <ProgressBar
+        android:id="@+id/remindersLoading"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        android:indeterminateTint="#1976D2"/>
+
+    <!-- Empty State -->
+    <TextView
+        android:id="@+id/remindersEmpty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="No reminders yet"
+        android:textSize="18sp"
+        android:textColor="#666666"
+        android:layout_centerInParent="true"
+        android:visibility="gone"/>
+
+    <!-- Reminders List -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvReminders"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/remindersTitle"
+        android:clipToPadding="false"
+        android:scrollbars="vertical"/>
+</RelativeLayout>

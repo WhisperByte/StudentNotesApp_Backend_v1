@@ -2,7 +2,24 @@
 
 An Android student productivity app built with Java + Firebase to manage tasks, deadlines, reminders, and track weekly progress — all in one streamlined dashboard.
 
-✨ Features
+⚙️ HOW TO RUN
+
+Clone the repository
+
+Create a Firebase project
+
+Enable:
+
+Authentication
+
+Firestore Database
+
+Add your google-services.json to /app
+
+Build & run on Android 8+
+
+✨ FEATURES
+
 📝 Tasks
 
 Create, edit, delete tasks
@@ -45,7 +62,7 @@ Firebase Authentication
 
 User-specific Firestore data
 
-🛠 Tech Stack
+🛠 TECH STACK
 
 Java (Android SDK)
 
@@ -91,22 +108,6 @@ Uses FLAG_IMMUTABLE for Android 12+ compatibility
 (Completed Tasks / Total Weekly Tasks) × 100
 
 Automatically updates when tasks are marked complete.
-
-⚙️ Setup
-
-Clone the repository
-
-Create a Firebase project
-
-Enable:
-
-Authentication
-
-Firestore Database
-
-Add your google-services.json to /app
-
-Build & run on Android 8+
 
 🚀 Future Improvements
 
